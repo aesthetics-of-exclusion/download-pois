@@ -59,9 +59,49 @@ def parse_poi_query(north, south, east, west, amenities=None, shops=None, timeou
             );
           );out;''')
 
-        # Parse amenties
         query_str = query_template.format(amenities="|".join(amenities), shops="|".join(shops), north=north, south=south, east=east, west=west,
                                           timeout=timeout, maxsize=maxsize)
+
+    elif shops:
+        query_template = ('''
+          [out:json][timeout:{timeout}]{maxsize};(
+            (
+              node["amenity"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              node["shop"~"{shops}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+            (
+              way["amenity"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              way["shop"~"{shops}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+            (
+              relation["amenity"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              relation["shop"~"{shops}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+          );out;''')
+
+        query_str = query_template.format(shops="|".join(shops), north=north, south=south, east=east, west=west,
+                                          timeout=timeout, maxsize=maxsize)
+
+    elif amenities:
+        query_template = ('''
+          [out:json][timeout:{timeout}]{maxsize};(
+            (
+              node["amenity"~"{amenities}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              node["shop"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+            (
+              way["amenity"~"{amenities}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              way["shop"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+            (
+              relation["amenity"~"{amenities}"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+              relation["shop"]({south:.6f},{west:.6f},{north:.6f},{east:.6f});(._;>;);
+            );
+          );out;''')
+
+        query_str = query_template.format(amenities="|".join(amenities), north=north, south=south, east=east, west=west,
+                                          timeout=timeout, maxsize=maxsize)
+
     else:
         # Overpass QL template
         query_template = ('''
@@ -80,7 +120,6 @@ def parse_poi_query(north, south, east, west, amenities=None, shops=None, timeou
             );
           );out;''')
 
-        # Parse amenties
         query_str = query_template.format(north=north, south=south, east=east, west=west,
                                           timeout=timeout, maxsize=maxsize)
     return query_str
