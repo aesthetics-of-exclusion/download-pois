@@ -8617,28 +8617,5 @@
   <g stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" stroke="#000000" stroke-linecap="square" fill="none" font-family=".SF NS Text" transform="matrix(11.8081,0,0,11.8081,0,0)" font-weight="400" font-size="54.1667" font-style="normal"/>
   <g stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" stroke="#000000" stroke-linecap="square" fill="none" font-family=".SF NS Text" transform="matrix(1,0,0,1,0,0)" font-weight="400" font-size="54.1667" font-style="normal"/>
  </g>
- <metadata id="qgismetadata">
-  <rdf:RDF>
-   <cc:Work>
-    <dc:format>image/svg+xml</dc:format>
-    <dc:title></dc:title>
-    <dc:date>2020-03-09T13:23:33</dc:date>
-    <dc:identifier></dc:identifier>
-    <dc:description></dc:description>
-    <dc:creator>
-     <cc:Agent>
-      <dc:title>Bert Spaan</dc:title>
-     </cc:Agent>
-    </dc:creator>
-    <dc:publisher>
-     <cc:Agent>
-      <dc:title>QGIS 3.6.0-Noosa</dc:title>
-     </cc:Agent>
-    </dc:publisher>
-    <dc:subject>
-     <rdf:Bag/>
-    </dc:subject>
-   </cc:Work>
-  </rdf:RDF>
- </metadata>
+
 </svg>
