@@ -13,6 +13,15 @@ Then, activate the virtual environment:
 
 To download POIs from a specific region, supply a GeoJSON polygon as the command line argument:
 
-    ./download-pois.py ./data/amsterdam-boundary.geojson > ./data/amsterdam-pois.geojson
+    ./download_pois.py ./data/amsterdam-boundary.geojson \
+    > ./data/amsterdam-pois.geojson
 
-Use [`poi-geojson-simplifier`](https://github.com/aesthetics-of-exclusion/poi-geojson-simplifier) to simplify the resulting GeoJSON file and decrease the file size.
+Use [`poi-geojson-simplifier`](https://github.com/aesthetics-of-exclusion/poi-geojson-simplifier) to simplify the resulting GeoJSON file and decrease the file size:
+
+    ./download_pois.py ./data/amsterdam-boundary.geojson \
+    | ../poi-geojson-simplifier/index.js \
+    > ./data/amsterdam-pois.geojson
+
+To download POIs for all cities in this repository, run:
+
+    ./run.sh

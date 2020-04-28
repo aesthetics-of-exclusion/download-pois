@@ -9,9 +9,17 @@ AMENITIES="-a bar -a biergarten -a cafe -a fast_food -a food_court -a ice_cream 
   -a photo_booth -a place_of_worship -a post_depot -a post_office"
 SHOPS=""
 
-./download-pois.py $AMENITIES $SHOPS ./data/amsterdam-boundary.geojson | ../poi-geojson-simplifier/index.js > \
-  ./data/amsterdam-pois.geojson
-./download-pois.py $AMENITIES $SHOPS ./data/brooklyn-boundary.geojson | ../poi-geojson-simplifier/index.js > \
-  ./data/brooklyn-pois.geojson
-./download-pois.py $AMENITIES $SHOPS ./data/berlin-boundary.geojson | ../poi-geojson-simplifier/index.js > \
-  ./data/berlin-pois.geojson
+./download_pois.py $AMENITIES $SHOPS \
+  ./data/amsterdam-boundary.geojson \
+  | ../poi-geojson-simplifier/index.js \
+  > ./data/amsterdam-pois.geojson
+
+./download_pois.py $AMENITIES $SHOPS \
+  ./data/brooklyn-boundary.geojson \
+  | ../poi-geojson-simplifier/index.js \
+  > ./data/brooklyn-pois.geojson
+
+./download_pois.py $AMENITIES $SHOPS \
+  ./data/berlin-boundary.geojson \
+  | ../poi-geojson-simplifier/index.js \
+  > ./data/berlin-pois.geojson
